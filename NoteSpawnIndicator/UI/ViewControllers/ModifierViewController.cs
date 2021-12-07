@@ -24,6 +24,9 @@ namespace NoteSpawnIndicator.UI
             }
         }
 
+        [UIAction("mode-formatter")]
+        private string ModeFormatter(int modeNum) => modeNum == 1 ? "Indicate Note Jump" : "Indicate Note Spawn";
+
         [UIValue("enabled")]
         private bool ModEnabled
         {
@@ -35,6 +38,18 @@ namespace NoteSpawnIndicator.UI
             }
         }
 
+
+        [UIValue("mode")]
+        private int Mode
+        {
+            get => PluginConfig.Instance.IndicateNoteJump ? 1 : 0;
+            set
+            {
+                PluginConfig.Instance.IndicateNoteJump = value == 1;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mode)));
+            }
+        }
+
         [UIValue("offset-y")]
         private float YOffset
         {
@@ -42,7 +57,7 @@ namespace NoteSpawnIndicator.UI
             set
             {
                 PluginConfig.Instance.YOffset = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ModEnabled)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(YOffset)));
             }
         }
 
@@ -53,7 +68,7 @@ namespace NoteSpawnIndicator.UI
             set
             {
                 PluginConfig.Instance.XOffset = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ModEnabled)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(XOffset)));
             }
         }
 
@@ -64,7 +79,7 @@ namespace NoteSpawnIndicator.UI
             set
             {
                 PluginConfig.Instance.Scale = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ModEnabled)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Scale)));
             }
         }
     }

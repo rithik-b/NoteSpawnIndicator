@@ -38,7 +38,11 @@ namespace NoteSpawnIndicator
         {
             FloatingImage floatingImage = new GameObject("FloatingImage", typeof(FloatingImage)).GetComponent<FloatingImage>();
             Material material = await resourceLoader.LoadSpriteMaterial();
-            Sprite sprite = await cachedMediaAsyncLoader.LoadSpriteAsync(Path.Combine(UnityGame.UserDataPath, $"{nameof(NoteSpawnIndicator)}.png"), CancellationToken.None);
+
+            Sprite sprite = PluginConfig.Instance.UseCustomImage ? 
+                await cachedMediaAsyncLoader.LoadSpriteAsync(Path.Combine(UnityGame.UserDataPath, $"{nameof(NoteSpawnIndicator)}.png"), CancellationToken.None) :
+                BeatSaberMarkupLanguage.Utilities.ImageResources.WhitePixel;
+
             floatingImage.Setup(sprite, material, beatmapObjectSpawnMovementData.GetField<Vector3, BeatmapObjectSpawnMovementData>(PluginConfig.Instance.IndicateNoteJump ? "_moveEndPos" : "_moveStartPos"));
             floatingImage.transform.localScale = new Vector3(PluginConfig.Instance.Scale / 100, PluginConfig.Instance.Scale / 100, PluginConfig.Instance.Scale / 100);
             floatingImage.transform.localPosition = new Vector3(PluginConfig.Instance.XOffset, PluginConfig.Instance.YOffset, floatingImage.transform.localPosition.z);

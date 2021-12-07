@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace NoteSpawnIndicator
+namespace NoteSpawnIndicator.Installers
 {
     internal class NoteSpawnIndicatorAppInstaller : Installer
     {

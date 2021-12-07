@@ -1,4 +1,7 @@
 ﻿using IPA;
+using IPA.Config;
+using IPA.Config.Stores;
+using NoteSpawnIndicator.Installers;
 using SiraUtil.Zenject;
 using IPALogger = IPA.Logging.Logger;
 
@@ -21,19 +24,17 @@ namespace NoteSpawnIndicator
             Instance = this;
             Plugin.Log = logger;
             zenjector.OnApp<NoteSpawnIndicatorAppInstaller>();
+            zenjector.OnApp<NoteSpawnIndicatorMenuInstaller>();
             zenjector.OnGame<NoteSpawnIndicatorGameInstaller>().ShortCircuitForMultiplayer().ShortCircuitForTutorial();
         }
 
         #region BSIPA Config
-        //Uncomment to use BSIPA's config
-        /*
         [Init]
         public void InitWithConfig(Config conf)
         {
             Configuration.PluginConfig.Instance = conf.Generated<Configuration.PluginConfig>();
             Plugin.Log?.Debug("Config loaded");
         }
-        */
         #endregion
 
 

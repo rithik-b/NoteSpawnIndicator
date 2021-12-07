@@ -1,4 +1,5 @@
 ﻿using IPA.Utilities;
+using NoteSpawnIndicator.Configuration;
 using UnityEngine;
 using Zenject;
 
@@ -34,7 +35,8 @@ namespace NoteSpawnIndicator
             FloatingImage floatingImage = new GameObject("FloatingImage", typeof(FloatingImage)).GetComponent<FloatingImage>();
             Material material = await resourceLoader.LoadSpriteMaterial();
             floatingImage.Setup(BeatSaberMarkupLanguage.Utilities.ImageResources.WhitePixel, material, beatmapObjectSpawnMovementData.GetField<Vector3, BeatmapObjectSpawnMovementData>("_moveStartPos"));
-            floatingImage.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            floatingImage.transform.localScale = new Vector3(PluginConfig.Instance.Scale, PluginConfig.Instance.Scale, PluginConfig.Instance.Scale);
+            floatingImage.transform.localPosition = new Vector3(PluginConfig.Instance.XOffset, PluginConfig.Instance.YOffset, floatingImage.transform.localPosition.z);
         }
 
         public void Initialize()

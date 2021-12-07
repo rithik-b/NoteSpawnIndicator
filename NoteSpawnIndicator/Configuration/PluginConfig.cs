@@ -1,5 +1,4 @@
-﻿/*
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using IPA.Config.Stores;
 
 [assembly: InternalsVisibleTo(GeneratedStore.AssemblyVisibilityTarget)]
@@ -8,8 +7,10 @@ namespace NoteSpawnIndicator.Configuration
     internal class PluginConfig
     {
         public static PluginConfig Instance { get; set; }
-        public virtual int IntValue { get; set; } = 42; // Must be 'virtual' if you want BSIPA to detect a value change and save the config automatically.
-
+        public virtual bool ModEnabled { get; set; } = false;
+        public virtual float YOffset { get; set; } = 0f;
+        public virtual float XOffset { get; set; } = 0f;
+        public virtual float Scale { get; set; } = 0.01f;
         /// <summary>
         /// This is called whenever BSIPA reads the config from disk (including when file changes are detected).
         /// </summary>
@@ -35,4 +36,3 @@ namespace NoteSpawnIndicator.Configuration
         }
     }
 }
-*/

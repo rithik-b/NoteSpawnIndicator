@@ -1,12 +1,16 @@
-﻿using Zenject;
+﻿using NoteSpawnIndicator.Configuration;
+using Zenject;
 
-namespace NoteSpawnIndicator
+namespace NoteSpawnIndicator.Installers
 {
     internal class NoteSpawnIndicatorGameInstaller : Installer
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<SpawnIndicator>().FromNewComponentOnRoot().AsSingle();
+            if (PluginConfig.Instance.ModEnabled)
+            {
+                Container.BindInterfacesTo<SpawnIndicator>().FromNewComponentOnRoot().AsSingle();
+            }
         }
     }
 }

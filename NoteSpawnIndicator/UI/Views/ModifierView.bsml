@@ -3,8 +3,8 @@
 		<toggle-setting text='Enabled' value='enabled' apply-on-change='true' bind-value='true' hover-hint='Show an image in the area where the notes spawn.' />
 		<increment-setting text='Mode' value='mode' apply-on-change='true' bind-value='true' min='0' max='1' integer-only='true' formatter='mode-formatter' />
 		<toggle-setting text='Custom Image' value='custom-image' apply-on-change='true' bind-value='true' hover-hint='Use a custom image file located in Userdata\NoteSpawnIndicator.png' />
-		<slider-setting text='Y Offset' value='offset-y' min='-5' max='5' step='0.1' apply-on-change='true' bind-value='true' />
-		<slider-setting text='X Offset' value='offset-x' min='-5' max='5' step='0.1' apply-on-change='true' bind-value='true' />
-		<slider-setting text='Scale' value='scale' min='0.01' max='5' step='0.01' apply-on-change='true' bind-value='true' />
+		<slider-setting text='Y Offset' value='offset-y' min='-5' max='5' increment='0.1' apply-on-change='true' bind-value='true' show-buttons='true' />
+		<slider-setting text='X Offset' value='offset-x' min='-5' max='5' increment='0.1' apply-on-change='true' bind-value='true' show-buttons='true' />
+		<slider-setting text='Scale' value='scale' min='0.01' max='5' increment='0.01' apply-on-change='true' bind-value='true' show-buttons='true' />
 	</settings-container>
 </bg>

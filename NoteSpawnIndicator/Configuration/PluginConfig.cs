@@ -9,6 +9,7 @@ namespace NoteSpawnIndicator.Configuration
         public static PluginConfig Instance { get; set; }
         public virtual bool ModEnabled { get; set; } = false;
         public virtual bool IndicateNoteJump { get; set; } = false;
+        public virtual bool UseCustomImage { get; set; } = false;
         public virtual float YOffset { get; set; } = 0.25f;
         public virtual float XOffset { get; set; } = 0f;
         public virtual float Scale { get; set; } = 0.01f;

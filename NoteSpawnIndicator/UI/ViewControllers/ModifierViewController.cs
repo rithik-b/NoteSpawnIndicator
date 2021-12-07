@@ -50,6 +50,17 @@ namespace NoteSpawnIndicator.UI
             }
         }
 
+        [UIValue("custom-image")]
+        private bool UseCustomImage
+        {
+            get => PluginConfig.Instance.UseCustomImage;
+            set
+            {
+                PluginConfig.Instance.UseCustomImage = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(UseCustomImage)));
+            }
+        }
+
         [UIValue("offset-y")]
         private float YOffset
         {

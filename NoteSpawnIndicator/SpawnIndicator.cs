@@ -45,7 +45,7 @@ namespace NoteSpawnIndicator
 
             floatingImage.Setup(sprite, material, beatmapObjectSpawnMovementData.GetField<Vector3, BeatmapObjectSpawnMovementData>(PluginConfig.Instance.IndicateNoteJump ? "_moveEndPos" : "_moveStartPos"));
             floatingImage.transform.localScale = new Vector3(PluginConfig.Instance.Scale / 100, PluginConfig.Instance.Scale / 100, PluginConfig.Instance.Scale / 100);
-            floatingImage.transform.localPosition = new Vector3(PluginConfig.Instance.XOffset, PluginConfig.Instance.YOffset, floatingImage.transform.localPosition.z);
+            floatingImage.transform.localPosition = new Vector3(PluginConfig.Instance.XOffset, PluginConfig.Instance.YOffset, floatingImage.transform.localPosition.z + PluginConfig.Instance.ZOffset);
         }
     }
 }

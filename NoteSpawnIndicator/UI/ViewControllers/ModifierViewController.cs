@@ -61,6 +61,17 @@ namespace NoteSpawnIndicator.UI
             }
         }
 
+        [UIValue("offset-x")]
+        private float XOffset
+        {
+            get => PluginConfig.Instance.XOffset;
+            set
+            {
+                PluginConfig.Instance.XOffset = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(XOffset)));
+            }
+        }
+
         [UIValue("offset-y")]
         private float YOffset
         {
@@ -72,14 +83,14 @@ namespace NoteSpawnIndicator.UI
             }
         }
 
-        [UIValue("offset-x")]
-        private float XOffset
+        [UIValue("offset-z")]
+        private float ZOffset
         {
-            get => PluginConfig.Instance.XOffset;
+            get => PluginConfig.Instance.ZOffset;
             set
             {
-                PluginConfig.Instance.XOffset = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(XOffset)));
+                PluginConfig.Instance.ZOffset = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ZOffset)));
             }
         }
 

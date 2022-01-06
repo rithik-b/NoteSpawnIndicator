@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace NoteSpawnIndicator
 {
+    // Credits to Auros (ImageFactory)
     internal class ResourceLoader : IDisposable
     {
         private AssetBundle? _bundle;
@@ -17,7 +18,7 @@ namespace NoteSpawnIndicator
         public async Task<Material> LoadSpriteMaterial()
         {
             while (_isProcessing)
-                await SiraUtil.Utilities.AwaitSleep(10);
+                await SiraUtil.Extras.Utilities.AwaitSleep(10);
 
             if (_cachedMaterial != null)
                 return _cachedMaterial;
@@ -31,14 +32,14 @@ namespace NoteSpawnIndicator
 
             var bundle = AssetBundle.LoadFromMemoryAsync(ms.ToArray());
             while (!bundle.isDone)
-                await SiraUtil.Utilities.AwaitSleep(0);
+                await SiraUtil.Extras.Utilities.AwaitSleep(0);
             if (_cachedMaterial != null)
                 return _cachedMaterial;
 
             _bundle = bundle.assetBundle;
             var spriteReq = bundle.assetBundle.LoadAssetAsync<GameObject>("_Sprite");
             while (!spriteReq.isDone)
-                await SiraUtil.Utilities.AwaitSleep(0);
+                await SiraUtil.Extras.Utilities.AwaitSleep(0);
             if (_cachedMaterial != null)
                 return _cachedMaterial;
 

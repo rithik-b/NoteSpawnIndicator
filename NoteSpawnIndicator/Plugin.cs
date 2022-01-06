@@ -23,9 +23,9 @@ namespace NoteSpawnIndicator
         {
             Instance = this;
             Plugin.Log = logger;
-            zenjector.OnApp<NoteSpawnIndicatorAppInstaller>();
-            zenjector.OnApp<NoteSpawnIndicatorMenuInstaller>();
-            zenjector.OnGame<NoteSpawnIndicatorGameInstaller>().ShortCircuitForMultiplayer().ShortCircuitForTutorial();
+            zenjector.Install<NoteSpawnIndicatorAppInstaller>(Location.App);
+            zenjector.Install<NoteSpawnIndicatorMenuInstaller>(Location.Menu);
+            zenjector.Install<NoteSpawnIndicatorGameInstaller>(Location.GameCore);
         }
 
         #region BSIPA Config

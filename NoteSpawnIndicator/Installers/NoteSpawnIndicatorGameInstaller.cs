@@ -9,7 +9,7 @@ namespace NoteSpawnIndicator.Installers
         {
             if (PluginConfig.Instance.ModEnabled)
             {
-                Container.BindInterfacesTo<SpawnIndicator>().FromNewComponentOnRoot().AsSingle();
+                Container.Bind<SpawnIndicator>().FromNewComponentOnNewGameObject().AsSingle().NonLazy();
             }
         }
     }

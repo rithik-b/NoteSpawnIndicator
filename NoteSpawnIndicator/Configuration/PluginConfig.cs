@@ -1,5 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using IPA.Config.Stores;
+using IPA.Config.Stores.Attributes;
+using IPA.Config.Stores.Converters;
 
 [assembly: InternalsVisibleTo(GeneratedStore.AssemblyVisibilityTarget)]
 namespace NoteSpawnIndicator.Configuration
@@ -7,13 +9,15 @@ namespace NoteSpawnIndicator.Configuration
     internal class PluginConfig
     {
         public static PluginConfig Instance { get; set; }
-        public virtual bool ModEnabled { get; set; } = false;
-        public virtual bool IndicateNoteJump { get; set; } = false;
+
+        [UseConverter(typeof(EnumConverter<ModeEnum>))]
+        [NonNullable]
+        public virtual ModeEnum Mode { get; set; } = ModeEnum.Off;
         public virtual bool UseCustomImage { get; set; } = false;
         public virtual float XOffset { get; set; } = 0f;
-        public virtual float YOffset { get; set; } = 0.25f;
+        public virtual float YOffset { get; set; } = 0.5f;
         public virtual float ZOffset { get; set; } = 0f;
-        public virtual float Scale { get; set; } = 0.01f;
+        public virtual float Scale { get; set; } = 0.1f;
         /// <summary>
         /// This is called whenever BSIPA reads the config from disk (including when file changes are detected).
         /// </summary>
@@ -36,6 +40,13 @@ namespace NoteSpawnIndicator.Configuration
         public virtual void CopyFrom(PluginConfig other)
         {
             // This instance's members populated from other
+        }
+
+        public enum ModeEnum
+        {
+            Off,
+            NoteSpawn,
+            NoteJump
         }
     }
 }

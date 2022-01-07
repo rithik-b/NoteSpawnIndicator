@@ -1,14 +1,18 @@
-﻿{
-  "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
-  "id": "NoteSpawnIndicator",
-  "name": "NoteSpawnIndicator",
-  "author": "PixelBoom",
-  "version": "1.0.0",
-  "description": "A simple mod that displays an image where the notes spawn.",
-  "gameVersion": "1.19.0",
+{
+    "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
+    "id": "NoteSpawnIndicator",
+    "name": "NoteSpawnIndicator",
+    "author": "PixelBoom",
+    "version": "1.0.0",
+    "description": "A simple mod that displays an image where the notes spawn or jump.",
+    "gameVersion": "1.19.0",
     "dependsOn": {
         "BSIPA": "^4.2.1",
         "BeatSaberMarkupLanguage": "^1.6.0",
         "SiraUtil": "^3.0.0"
+    },
+    "links": {
+        "project-source": "https://github.com/rithik-b/NoteSpawnIndicator",
+        "donate": "https://ko-fi.com/pixelboom"
     }
 }

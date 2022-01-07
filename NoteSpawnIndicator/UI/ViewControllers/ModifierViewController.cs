@@ -25,27 +25,15 @@ namespace NoteSpawnIndicator.UI
         }
 
         [UIAction("mode-formatter")]
-        private string ModeFormatter(int modeNum) => modeNum == 1 ? "Indicate Note Jump" : "Indicate Note Spawn";
-
-        [UIValue("enabled")]
-        private bool ModEnabled
-        {
-            get => PluginConfig.Instance.ModEnabled;
-            set
-            {
-                PluginConfig.Instance.ModEnabled = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ModEnabled)));
-            }
-        }
-
+        private string ModeFormatter(int modeNum) => modeNum == 0 ? "Off" : modeNum == 1 ? "Indicate Note Spawn" : "Indicate Note Jump";
 
         [UIValue("mode")]
         private int Mode
         {
-            get => PluginConfig.Instance.IndicateNoteJump ? 1 : 0;
+            get => (int)PluginConfig.Instance.Mode;
             set
             {
-                PluginConfig.Instance.IndicateNoteJump = value == 1;
+                PluginConfig.Instance.Mode = (PluginConfig.ModeEnum)value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mode)));
             }
         }

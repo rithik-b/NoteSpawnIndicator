@@ -1,8 +1,10 @@
 ﻿using IPA;
 using IPA.Config;
 using IPA.Config.Stores;
-using NoteSpawnIndicator.Installers;
+using NoteSpawnIndicator.Configuration;
+using NoteSpawnIndicator.UI;
 using SiraUtil.Zenject;
+using Zenject;
 using IPALogger = IPA.Logging.Logger;
 
 namespace NoteSpawnIndicator
@@ -23,9 +25,24 @@ namespace NoteSpawnIndicator
         {
             Instance = this;
             Plugin.Log = logger;
-            zenjector.Install<NoteSpawnIndicatorAppInstaller>(Location.App);
-            zenjector.Install<NoteSpawnIndicatorMenuInstaller>(Location.Menu);
-            zenjector.Install<NoteSpawnIndicatorGameInstaller>(Location.GameCore);
+
+            zenjector.Install(Location.App, (DiContainer Container) =>
+            {
+                Container.BindInterfacesAndSelfTo<ResourceLoader>().AsSingle();
+            });
+
+            zenjector.Install(Location.Menu, (DiContainer Container) =>
+            {
+                Container.BindInterfacesTo<ModifierViewController>().AsSingle();
+            });
+
+            zenjector.Install(Location.Player, (DiContainer Container) =>
+            {
+                if (PluginConfig.Instance.Mode != PluginConfig.ModeEnum.Off)
+                {
+                    Container.Bind<SpawnIndicator>().FromNewComponentOnNewGameObject().AsSingle().NonLazy();
+                }
+            });
         }
 
         #region BSIPA Config
